@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { selectCurrentUser } from "../../services/store"
-import { useFetchProfileQuery } from "../../api/mainApiSlice"
+import { selectCurrentUser } from "../services/store"
+import { useFetchProfileQuery } from "../api/mainApiSlice"
 
 const styles = {
   navBar: `flex gap-6`,
