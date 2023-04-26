@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { CardActionArea, CardMedia, CardContent, Card } from "@mui/material"
-import { selectBlogs } from "../../services/store"
+import { BlogType } from "../types"
+import { selectBlogs } from "../services/store"
 
 const styles = {
   container: `container my-6 flex flex-wrap justify-center`,
@@ -11,26 +12,24 @@ const styles = {
 }
 
 const ProfileBlogs = () => {
-  const blogs = useSelector(selectBlogs)
+  const blogs: BlogType[] = useSelector(selectBlogs)
 
   if (blogs === undefined) return null
-  else if (blogs === null) return <h2>Data not found!</h2>
+  else if (blogs === null) return <h2>Share Your Experience with others!</h2>
 
-  if (blogs.length < 1) return <h2>Add A Blog!</h2>
-
-  const blogsRender = blogs.map((post) => {
+  const blogsRender = blogs?.map((blog: BlogType) => {
     return (
-      <Link to={`/post/${post._id}`} key={post._id} className="no-underline">
+      <Link to={`/post/${blog._id}`} key={blog._id} className="no-underline">
         <Card className={styles.card}>
           <CardActionArea>
             <CardMedia
               component="img"
               className={styles.img}
-              image={post.image}
-              alt={post.title}
+              image={blog.image}
+              alt={blog.title}
             />
             <CardContent>
-              <h3>{post.title}</h3>
+              <h3>{blog.title}</h3>
             </CardContent>
           </CardActionArea>
         </Card>

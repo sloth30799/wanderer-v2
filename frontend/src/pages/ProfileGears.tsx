@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { selectGears } from "../../services/store"
+import { selectGears } from "../services/store"
+import { GearType } from "../types"
 
 const styles = {
   container: `container my-6 m-auto flex flex-col justify-center`,
@@ -11,14 +12,12 @@ const styles = {
 }
 
 const ProfileGears = () => {
-  const gears = useSelector(selectGears)
+  const gears: GearType[] = useSelector(selectGears)
 
   if (gears === undefined) return null
-  else if (gears === null) return <h2>Data not found!</h2>
+  else if (gears === null) return <h2>Make Your Own Gear List!</h2>
 
-  if (gears.length < 1) return <h2>Create a template!</h2>
-
-  const gearsRender = gears.map((gear) => {
+  const gearsRender = gears.map((gear: GearType) => {
     return (
       <Link to={`/gear/${gear._id}`} key={gear._id} className="no-underline">
         <div className={styles.row}>

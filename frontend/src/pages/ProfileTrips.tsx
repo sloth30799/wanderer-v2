@@ -1,8 +1,9 @@
 import { CardActionArea, CardActions, CardContent, Card } from "@mui/material"
 import { Link } from "react-router-dom"
-import { timeFormat } from "../../utils/formats"
+import { timeFormat } from "../utils/formats"
 import { useSelector } from "react-redux"
-import { selectTrips } from "../../services/store"
+import { selectTrips } from "../services/store"
+import { TripType } from "../types"
 
 const styles = {
   container: `container my-6 m-auto flex flex-wrap justify-center gap-6`,
@@ -13,14 +14,12 @@ const styles = {
 }
 
 const ProfileTrips = () => {
-  const trips = useSelector(selectTrips)
+  const trips: TripType[] = useSelector(selectTrips)
 
   if (trips === undefined) return null
-  else if (trips === null) return <h2>Data not found!</h2>
+  else if (trips === null) return <h2>Start an adventure!</h2>
 
-  if (trips.length < 1) return <h2>Start an adventure!</h2>
-
-  const tripsRender = trips.map((trip) => {
+  const tripsRender = trips.map((trip: TripType) => {
     return (
       <Link to={`/trip/${trip._id}`} key={trip._id} className="no-underline">
         <Card className={styles.card}>

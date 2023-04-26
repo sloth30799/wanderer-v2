@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { useLogoutMutation } from "../../api/authApiSlice"
-import { logOutUser } from "../../services/features/auth/authSlice"
+import { useLogoutMutation } from "../api/authApiSlice"
+import { logOutUser } from "../services/features/auth/authSlice"
 import { useDispatch } from "react-redux"
 import { toast } from "react-hot-toast"
 
