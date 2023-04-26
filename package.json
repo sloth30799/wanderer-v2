@@ -1,0 +1,21 @@
+{
+  "name": "wanderer",
+  "version": "1.0.0",
+  "description": "Explore new places with Wanderer - the ultimate backpacker app that lets you plan your travels, share your experiences, and connect with like-minded travelers from all around the world.",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install && npm run build",
+    "start": "TG_ALLOW_MIXED=ALLOW  node backend/index.js"
+  },
+  "devDependencies": {
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "author": "Han Ye Htun",
+  "license": "ISC"
+}
